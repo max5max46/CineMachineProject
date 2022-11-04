@@ -6,20 +6,14 @@ using UnityEngine.Playables;
 public class TriggerScary : MonoBehaviour
 {
     public PlayableDirector timeline;
+    public GameObject Secret;
 
     public bool OneTimeTrigger = false;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
-        {
-            timeline.Play();
-
-            if (OneTimeTrigger == true)
-            {
-                Destroy(this.gameObject);
-            }
-
-        }
+        timeline.Play();
+        Secret.SetActive(true);
+        Destroy(this.gameObject);
     }
 }
